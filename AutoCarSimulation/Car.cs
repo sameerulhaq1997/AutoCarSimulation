@@ -14,7 +14,8 @@
             Name = name;
             X = x;
             Y = y;
-            Facing = Enum.Parse<DirectionEnum>(direction.ToString());
+            Enum.TryParse<DirectionEnum>(direction.ToString(), out DirectionEnum facing);
+            Facing = facing;
             Commands = new Queue<char>(commands);
             Stopped = false;
         }
