@@ -11,6 +11,26 @@ This project is a command-line simulation of an autonomous driving car, develope
 - **Collisions are detected**, and a car stops if it collides with another.
 - **HashSet** is used to track occupied positions efficiently.
 
+
+## Data Structures Used & Why
+
+### **Queue<char> (Commands Queue)**
+- **Purpose**: Stores movement commands (`F, L, R`) for each car.
+- **Why?** A queue ensures that commands are executed in the order they are received (FIFO - First In, First Out).
+
+### **Enum Direction**
+- **Purpose**: Represents the four possible directions (`N, E, S, W`).
+- **Why?** Enums provide a **strongly typed, readable representation** of car directions.
+
+### **HashSet<(int, int)> (Occupied Positions Set)**
+- **Purpose**: Keeps track of occupied positions on the grid.
+- **Why?** HashSet offers **O(1) lookup time**, which efficiently prevents cars from moving into occupied spaces.
+
+### **List<Car> (Car List)**
+- **Purpose**: Stores all cars added to the simulation.
+- **Why?** A list allows **dynamic storage** of cars with **easy iteration** during the simulation.
+
+
 ## System Requirements
 - **OS**: Windows/Linux/macOS
 - **.NET SDK**: .NET Core 8.0 or later
