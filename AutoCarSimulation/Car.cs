@@ -7,7 +7,7 @@
         public int Y { get; private set; }
         public DirectionEnum Facing { get; private set; }
         public Queue<char> Commands { get; }
-        public bool Stopped { get; private set; }
+        public bool Stopped { get; set; }
 
         public Car(string name, int x, int y, char direction, string commands)
         {

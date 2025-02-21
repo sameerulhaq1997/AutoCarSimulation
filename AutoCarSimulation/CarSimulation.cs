@@ -44,12 +44,25 @@
                     {
                         _occupiedPositions.Remove((car.X, car.Y));
                         car.ExecuteCommand(_width, _height, _occupiedPositions);
-                        _occupiedPositions.Add((car.X, car.Y));
-                        Console.WriteLine(car);
+                        if (_occupiedPositions.Contains((car.X, car.Y)))
+                        {
+                            Console.WriteLine($"Collision detected! {car.Name} has collided at ({car.X},{car.Y}).");
+                            car.Stopped = true;
+                        }
+                        else
+                        {
+                            _occupiedPositions.Add((car.X, car.Y));
+                            Console.WriteLine(car);
+                        }
                         commandsRemaining = true;
                     }
                 }
             } while (commandsRemaining);
+        }
+
+        public Car? GetCar(string name)
+        {
+            return _cars.FirstOrDefault(car => car.Name == name);
         }
     }
 

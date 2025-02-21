@@ -35,5 +35,24 @@ namespace AutoCarSimulation
             Assert.That(car.Y, Is.EqualTo(2));
             Assert.That(occupiedPositions.Contains((1, 1)), Is.False);
         }
+
+        [Test]
+        public void TestMultipleCarsSimulation()
+        {
+            CarSimulation simulation = new CarSimulation(10, 10);
+
+            simulation.AddCar("A", 2, 2, 'E', "FF");
+            simulation.AddCar("B", 4, 3, 'W', "F");
+
+            simulation.RunSimulation();
+
+            Assert.That(simulation.GetCar("A")?.X, Is.EqualTo(3));
+            Assert.That(simulation.GetCar("A")?.Y, Is.EqualTo(3));
+            Assert.That(simulation.GetCar("B")?.X, Is.EqualTo(3));
+            Assert.That(simulation.GetCar("B")?.Y, Is.EqualTo(3));
+
+            Assert.That(simulation.GetCar("A")?.Stopped, Is.True);
+            Assert.That(simulation.GetCar("B")?.Stopped, Is.True);
+        }
     }
 }
